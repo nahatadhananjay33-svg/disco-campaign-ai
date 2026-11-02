@@ -80,18 +80,6 @@ POSITIONING_AOV_BAND = {
     "unknown": (0, 10_000),    # no penalty when we don't know
 }
 
-# Positioning -> the persona price_sensitivity tier this product should target
-# (mirrors persona.price_sensitivity vocabulary). Lets Step 2 join product price
-# intent to the right shoppers deterministically.
-POSITIONING_TO_TARGET_SENSITIVITY = {
-    "value": "high",
-    "mid": "medium",
-    "mid-premium": "medium",
-    "premium": "low",
-    "luxury": "low",
-    "unknown": None,
-}
-
 # Cues (seen in subcategories / values / USP / audience) that imply a gifting
 # season -> mirrors publisher `notes` gifting-uplift. Deterministic, additive.
 SEASONALITY_CUES = {

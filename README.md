@@ -15,11 +15,9 @@ a fallback, so a single LLM outage degrades the output instead of crashing it.
 ```bash
 cp .env.example .env          # paste a free Groq key (console.groq.com/keys)
 pip install -r requirements.txt
-pytest -q                     # 134 tests, no API key needed (offline, deterministic path)
+pytest -q                     # 132 tests, no API key needed (offline, deterministic path)
 streamlit run app.py          # open http://localhost:8501
 ```
-
-Docker: `docker compose up` (reads `.env`, serves on `:8501`).
 
 - `GROQ_API_KEY` (required) — the primary LLM for parsing, matching, and creatives.
 - `GEMINI_API_KEY` (optional) — a **cross-provider fallback**: if Groq fails, the same
@@ -92,7 +90,7 @@ which one ran:
 
 The LLM wins on the thing the brief actually tests — *matching well, with visible
 reasoning* — so it ships as the primary. The deterministic matcher isn't a throwaway: it
-keeps the whole pipeline working (and the 134 tests running) with no API key at all.
+keeps the whole pipeline working (and the 132 tests running) with no API key at all.
 
 To keep the LLM disciplined: a rubric in the prompt (direct category/affinity → 85–100;
 a shared value/demographic alone → the weak 30–59 band) stops it clustering everything
@@ -234,7 +232,7 @@ src/
   llm.py                   Groq call + Gemini cross-provider fallback + retries
   data_loader.py           publishers.json / personas.json / example_advertisers
 prompts/                   the LLM prompts (extraction, matching, creative)
-tests/                     134 offline tests
+tests/                     132 offline tests
 scripts/                   demo_fallbacks.py — the 6-scenario fallback demo
 docs/                      known_limitations.md — edge cases + the path to production
 ```

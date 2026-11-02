@@ -1,8 +1,0 @@
-# One command to run anywhere: `docker compose up`
-services:
-  app:
-    build: .
-    ports:
-      - "8501:8501"
-    env_file:
-      - .env

@@ -4,48 +4,22 @@ The LLM extracts what the advertiser *said* (category, price, positioning). This
 module derives what follows from it, grounded in the catalog's real price scale,
 with ZERO LLM involvement — so it is testable, explainable, and cannot drift.
 
-Two kinds of derived value, deliberately handled differently:
-
-  STORED on the profile (independent signals worth precomputing):
+It STORES two derived signals on the profile:
     expected_aov_usd  <- stated price if any, else the positioning band midpoint
     seasonality       <- gifting cues in the extracted fields (mirrors pub notes)
 
-  NOT stored — pure functions of price_positioning, exposed as helpers so they
-  can never drift from positioning (their source maps live in config.py):
-    price_range_for(positioning)        -> POSITIONING_AOV_BAND
-    target_sensitivity_for(positioning) -> POSITIONING_TO_TARGET_SENSITIVITY
-
-derive_economics() is called once at the end of parse_advertiser(); matchers and
-config read the stored anchors and call the helpers where they need the band/tier.
+derive_economics() is called once at the end of parse_advertiser(); the matchers
+then read these anchors (they are in the fields fed to the matching prompts).
 """
 
 from __future__ import annotations
 
-from src.config import (
-    POSITIONING_AOV_BAND,
-    POSITIONING_TO_TARGET_SENSITIVITY,
-    SEASONALITY_CUES,
-)
+from src.config import POSITIONING_AOV_BAND, SEASONALITY_CUES
 from src.models import AdvertiserProfile
 
 # A finite upper bound for "luxury" so a midpoint stays meaningful; above the
 # catalog ceiling ($198) we anchor on the band floor rather than a silly average.
 _LUXURY_FLOOR = 200.0
-
-
-# --- Positioning-derived helpers (NOT stored; computed on demand from config) ---
-
-def price_range_for(positioning: str) -> tuple[float, float] | None:
-    """(low, high) order-value band for a positioning, or None if unknown."""
-    if positioning == "unknown":
-        return None
-    low, high = POSITIONING_AOV_BAND.get(positioning, POSITIONING_AOV_BAND["unknown"])
-    return (float(low), float(high))
-
-
-def target_sensitivity_for(positioning: str) -> str | None:
-    """Persona price_sensitivity tier this positioning should target (low/medium/high)."""
-    return POSITIONING_TO_TARGET_SENSITIVITY.get(positioning)
 
 
 def _expected_aov(positioning: str, price_point: float | None,
@@ -74,8 +48,8 @@ def _seasonality(profile: AdvertiserProfile) -> str | None:
 
 
 def derive_economics(profile: AdvertiserProfile) -> AdvertiserProfile:
-    """Populate the STORED derived fields in place and return the profile.
-    (price_range / target_sensitivity are not stored — see the helpers above.)"""
+    """Populate the derived fields (expected_aov_usd, seasonality) in place and
+    return the profile."""
     pos = profile.price_positioning.value
     band = POSITIONING_AOV_BAND.get(pos, POSITIONING_AOV_BAND["unknown"])
 

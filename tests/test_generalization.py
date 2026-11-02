@@ -6,8 +6,8 @@ would extract. They prove the engine stays valid and sensible far beyond the 15
 seed examples — any category wins the right publishers, off-catalog inputs are
 flagged as weak coverage, and the campaign config is always internally valid.
 
-The LLM's *actual* parsing of the raw text is checked separately, live, by
-scripts/eval_live.py (needs a Gemini key).
+The LLM's *actual* parsing of the raw text is exercised live through the app
+(`streamlit run app.py`); these offline tests cover the deterministic engine.
 """
 
 import json

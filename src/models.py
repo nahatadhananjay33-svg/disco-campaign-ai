@@ -76,12 +76,9 @@ class AdvertiserProfile(BaseModel):
     )
 
     # --- C2. Derived economics (filled DETERMINISTICALLY after extraction by
-    #         src/derivation.py — NOT by the LLM). Only genuinely independent
-    #         signals are stored here. Values that are a pure function of
-    #         price_positioning (its $-band, its target sensitivity tier) are NOT
-    #         stored — they'd duplicate positioning and could drift; derive them
-    #         on demand via derivation.price_range_for() / target_sensitivity_for(),
-    #         whose source maps live in config.py. ---
+    #         src/derivation.py — NOT by the LLM). The positioning $-band itself
+    #         is not stored (it would duplicate price_positioning and could drift);
+    #         it lives in config.POSITIONING_AOV_BAND and is read on demand. ---
     expected_aov_usd: float | None = Field(
         None, description="Single price anchor: the stated price if given, else the positioning band midpoint."
     )
