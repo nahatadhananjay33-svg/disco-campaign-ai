@@ -1,0 +1,11 @@
+# Lower bounds chosen so pip installs prebuilt wheels on modern Python
+# (incl. Python 3.14 on Windows) — no Rust/C++ compilation needed.
+streamlit>=1.40
+pydantic>=2.12
+python-dotenv>=1.0.1
+pytest>=8.3
+
+# LLM providers (set at least one key in .env). Groq is the default primary,
+# Gemini the automatic fallback — either can be the only one installed/used.
+groq>=0.11
+google-generativeai>=0.8.3

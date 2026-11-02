@@ -1,0 +1,1037 @@
+[
+  {
+    "id": "s01",
+    "text": "A subscription box for new kittens with toys, food samples and a care guide.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "pet",
+      "subcategories": [
+        "pet_supplies",
+        "subscription",
+        "toys",
+        "treats"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "curated"
+      ],
+      "target_audience": [
+        "cat owners",
+        "new pet owners"
+      ],
+      "messaging_tone": [
+        "friendly",
+        "caring"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "pet"
+    ]
+  },
+  {
+    "id": "s02",
+    "text": "Affordable, sturdy chew toys for big dogs.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "pet",
+      "subcategories": [
+        "pet_supplies",
+        "toys",
+        "treats"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "affordable"
+      ],
+      "target_audience": [
+        "dog owners"
+      ],
+      "messaging_tone": [
+        "playful"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "pet"
+    ]
+  },
+  {
+    "id": "s03",
+    "text": "Men's performance activewear for the gym.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "activewear",
+        "men"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "performance"
+      ],
+      "target_audience": [
+        "men",
+        "fitness"
+      ],
+      "messaging_tone": [
+        "performance-focused"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s04",
+    "text": "Timeless workwear for professional women in their 40s and 50s.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "women",
+        "workwear",
+        "mid-life",
+        "classic"
+      ],
+      "price_positioning": "premium",
+      "unique_selling_points": [
+        "timeless",
+        "quality"
+      ],
+      "target_audience": [
+        "women",
+        "professionals"
+      ],
+      "messaging_tone": [
+        "refined"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s05",
+    "text": "Sustainable sneakers made from recycled materials.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "shoes",
+        "sustainable",
+        "activewear"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "recycled materials",
+        "sustainable"
+      ],
+      "target_audience": [
+        "eco-conscious"
+      ],
+      "messaging_tone": [
+        "values-aligned"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s06",
+    "text": "Comfortable plus-size intimates and workwear basics for women.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "women",
+        "plus_size",
+        "intimates",
+        "workwear"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "inclusive",
+        "comfort"
+      ],
+      "target_audience": [
+        "women",
+        "plus-size"
+      ],
+      "messaging_tone": [
+        "body-positive"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s07",
+    "text": "Fun patterned socks that make great gifts.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "socks",
+        "basics",
+        "gifting"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "fun designs"
+      ],
+      "target_audience": [
+        "gift shoppers"
+      ],
+      "messaging_tone": [
+        "playful"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s08",
+    "text": "Clean, dermatologist-tested skincare for sensitive skin.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "beauty",
+      "subcategories": [
+        "skincare",
+        "dtc"
+      ],
+      "price_positioning": "premium",
+      "unique_selling_points": [
+        "dermatologist-tested",
+        "clean"
+      ],
+      "target_audience": [
+        "skincare enthusiasts"
+      ],
+      "messaging_tone": [
+        "science-backed",
+        "ingredient transparency"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "beauty"
+    ]
+  },
+  {
+    "id": "s09",
+    "text": "Personalized haircare formulated to your hair type.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "beauty",
+      "subcategories": [
+        "haircare",
+        "personalized",
+        "dtc"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "personalized formulas"
+      ],
+      "target_audience": [
+        "haircare shoppers"
+      ],
+      "messaging_tone": [
+        "tailored"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "beauty"
+    ]
+  },
+  {
+    "id": "s10",
+    "text": "Luxury linen bedding woven in Europe.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "home",
+      "subcategories": [
+        "bedding",
+        "home_textiles",
+        "bath"
+      ],
+      "price_positioning": "premium",
+      "unique_selling_points": [
+        "linen"
+      ],
+      "target_audience": [
+        "home decor lovers"
+      ],
+      "messaging_tone": [
+        "refined"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "home"
+    ]
+  },
+  {
+    "id": "s11",
+    "text": "Non-toxic ceramic cookware for health-conscious home cooks.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "home",
+      "subcategories": [
+        "cookware",
+        "kitchen",
+        "non_toxic"
+      ],
+      "price_positioning": "premium",
+      "unique_selling_points": [
+        "non-toxic",
+        "ceramic"
+      ],
+      "target_audience": [
+        "home cooks",
+        "health-conscious"
+      ],
+      "messaging_tone": [
+        "clean",
+        "quality"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "home"
+    ]
+  },
+  {
+    "id": "s12",
+    "text": "A sparkling gut-health soda with prebiotics, a healthier soda alternative.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "beverages",
+      "subcategories": [
+        "functional_beverages",
+        "soda_alternative",
+        "gut_health"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "prebiotics",
+        "gut health"
+      ],
+      "target_audience": [
+        "health-conscious",
+        "soda drinkers"
+      ],
+      "messaging_tone": [
+        "fun",
+        "wellness"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "beverages"
+    ]
+  },
+  {
+    "id": "s13",
+    "text": "Organic pantry staples delivered monthly.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "groceries",
+      "subcategories": [
+        "organic",
+        "pantry",
+        "subscription",
+        "natural"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "organic",
+        "natural"
+      ],
+      "target_audience": [
+        "health-conscious households"
+      ],
+      "messaging_tone": [
+        "wholesome"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "groceries",
+      "meal_kits",
+      "instant_delivery"
+    ]
+  },
+  {
+    "id": "s14",
+    "text": "Weeknight meal kits with pre-portioned ingredients.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "meal_kits",
+      "subcategories": [
+        "meal_kits",
+        "subscription",
+        "groceries"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "pre-portioned"
+      ],
+      "target_audience": [
+        "busy households"
+      ],
+      "messaging_tone": [
+        "time-saving",
+        "family-friendly"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "meal_kits",
+      "groceries"
+    ]
+  },
+  {
+    "id": "s15",
+    "text": "A daily multivitamin subscription designed for women's health.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "supplements",
+      "subcategories": [
+        "vitamins",
+        "supplements",
+        "subscription",
+        "women"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "evidence-based"
+      ],
+      "target_audience": [
+        "women",
+        "health-conscious"
+      ],
+      "messaging_tone": [
+        "science-backed",
+        "ingredient transparency"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "wellness_dtc",
+      "wellness_services"
+    ]
+  },
+  {
+    "id": "s16",
+    "text": "Boutique yoga and fitness classes, in-studio and online.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "wellness",
+      "subcategories": [
+        "fitness_classes",
+        "yoga",
+        "spa",
+        "personal_training"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "boutique",
+        "community"
+      ],
+      "target_audience": [
+        "fitness-engaged"
+      ],
+      "messaging_tone": [
+        "motivational"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "wellness_services",
+      "wellness_dtc"
+    ]
+  },
+  {
+    "id": "s17",
+    "text": "Late-night convenience delivery: snacks, drinks and household essentials.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "convenience",
+      "subcategories": [
+        "convenience",
+        "groceries",
+        "household",
+        "alcohol"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "convenience"
+      ],
+      "target_audience": [
+        "young urban"
+      ],
+      "messaging_tone": [
+        "impulse-friendly"
+      ],
+      "business_model": "marketplace",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "instant_delivery",
+      "groceries"
+    ]
+  },
+  {
+    "id": "s18",
+    "text": "Budget workout supplements: protein and creatine at half the price of big brands.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "supplements",
+      "subcategories": [
+        "supplements",
+        "protein",
+        "creatine"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "affordable",
+        "same formulations"
+      ],
+      "target_audience": [
+        "gym-goers",
+        "price-conscious"
+      ],
+      "messaging_tone": [
+        "no-nonsense"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "wellness_dtc",
+      "wellness_services"
+    ]
+  },
+  {
+    "id": "s19",
+    "text": "Hand-poured soy candles with natural fragrances, mostly bought as gifts.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "home",
+      "subcategories": [
+        "candles",
+        "home",
+        "gifting"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "soy wax",
+        "natural fragrances"
+      ],
+      "target_audience": [
+        "gift shoppers",
+        "home decor"
+      ],
+      "messaging_tone": [
+        "cozy"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "home"
+    ]
+  },
+  {
+    "id": "s20",
+    "text": "Sustainable activewear for women made from recycled ocean plastic.",
+    "kind": "clear",
+    "profile": {
+      "brand_name": null,
+      "product_category": "apparel",
+      "subcategories": [
+        "activewear",
+        "women",
+        "sustainable"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "recycled ocean plastic",
+        "sustainable"
+      ],
+      "target_audience": [
+        "women",
+        "fitness",
+        "eco-conscious"
+      ],
+      "messaging_tone": [
+        "values-aligned",
+        "performance"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_top_categories": [
+      "apparel"
+    ]
+  },
+  {
+    "id": "s21",
+    "text": "B2B software that automates HR onboarding for mid-size companies.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "software",
+      "subcategories": [
+        "saas",
+        "b2b",
+        "hr"
+      ],
+      "price_positioning": "unknown",
+      "unique_selling_points": [
+        "automation"
+      ],
+      "target_audience": [
+        "HR teams",
+        "businesses"
+      ],
+      "messaging_tone": [
+        "professional"
+      ],
+      "business_model": "b2b",
+      "confidence": 0.8,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s22",
+    "text": "Wireless noise-cancelling earbuds for commuters.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "electronics",
+      "subcategories": [
+        "audio",
+        "earbuds",
+        "consumer_electronics"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "noise-cancelling"
+      ],
+      "target_audience": [
+        "commuters",
+        "tech"
+      ],
+      "messaging_tone": [
+        "sleek"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s23",
+    "text": "Home EV charging accessories and cables.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "automotive",
+      "subcategories": [
+        "ev",
+        "charging",
+        "accessories"
+      ],
+      "price_positioning": "mid",
+      "unique_selling_points": [
+        "compatible"
+      ],
+      "target_audience": [
+        "EV owners"
+      ],
+      "messaging_tone": [
+        "practical"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s24",
+    "text": "A boutique hotel booking app for weekend city breaks.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "travel",
+      "subcategories": [
+        "hotels",
+        "booking",
+        "travel"
+      ],
+      "price_positioning": "mid-premium",
+      "unique_selling_points": [
+        "curated stays"
+      ],
+      "target_audience": [
+        "travelers"
+      ],
+      "messaging_tone": [
+        "aspirational"
+      ],
+      "business_model": "marketplace",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s25",
+    "text": "A personal budgeting app that tracks your spending automatically.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "fintech",
+      "subcategories": [
+        "finance",
+        "budgeting",
+        "app"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "automatic tracking"
+      ],
+      "target_audience": [
+        "young professionals"
+      ],
+      "messaging_tone": [
+        "empowering"
+      ],
+      "business_model": "subscription",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s26",
+    "text": "An indie puzzle video game for mobile.",
+    "kind": "off_catalog",
+    "profile": {
+      "brand_name": null,
+      "product_category": "gaming",
+      "subcategories": [
+        "video_games",
+        "mobile",
+        "indie"
+      ],
+      "price_positioning": "value",
+      "unique_selling_points": [
+        "original puzzles"
+      ],
+      "target_audience": [
+        "casual gamers"
+      ],
+      "messaging_tone": [
+        "quirky"
+      ],
+      "business_model": "dtc",
+      "confidence": 0.85,
+      "missing_information": [],
+      "clarifying_questions": []
+    },
+    "expect_weak_coverage": true
+  },
+  {
+    "id": "s27",
+    "text": "We make good stuff.",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.15,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s28",
+    "text": "Something for everyone.",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.12,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s29",
+    "text": "The future is here.",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.1,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s30",
+    "text": "test",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.05,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s31",
+    "text": "🔥🔥🔥",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.05,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s32",
+    "text": "A lifestyle brand.",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.3,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s33",
+    "text": "We help people live their best lives.",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.2,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s34",
+    "text": "idk whatever sells",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.08,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  },
+  {
+    "id": "s35",
+    "text": "asdf 123 qwerty",
+    "kind": "ambiguous",
+    "profile": {
+      "brand_name": null,
+      "product_category": null,
+      "subcategories": [],
+      "price_positioning": "unknown",
+      "unique_selling_points": [],
+      "target_audience": [],
+      "messaging_tone": [],
+      "business_model": null,
+      "confidence": 0.03,
+      "missing_information": [
+        "product",
+        "audience"
+      ],
+      "clarifying_questions": []
+    },
+    "expect_gate": true
+  }
+]
