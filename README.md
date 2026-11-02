@@ -38,15 +38,13 @@ flowchart TD
     C -->|yes| PER["Match personas · LLM<br/>➜ 3–5 best-fit personas"]
     PUB --> COV{Coverage ok?}
     COV -->|none| GAP[Explain the gap · no campaign]
-    B --> CRE
-    PER --> CRE
     COV -->|good / weak| CFG
     PER --> CFG
-    B --> CFG
+    PER --> CRE
 
     subgraph OUT ["Final output — what the advertiser gets"]
-      CRE["Creatives<br/>from profile + persona"]
       CFG["Campaign config<br/>from profile + publishers + personas"]
+      CRE["Creatives<br/>from profile + persona"]
     end
 
     classDef stop fill:#fde8e8,stroke:#e57373,color:#111;
