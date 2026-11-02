@@ -14,7 +14,7 @@ It behaves like a careful strategist, not a demo: it **asks** instead of guessin
 input is vague, says **"no good fit"** instead of forcing a match when the catalog doesn't
 suit the advertiser, and keeps working even if the AI is briefly down.
 
-**Live demo:** https://disco-campaign-ai.streamlit.app
+**Live demo:** https://disco-campaign-ai.streamlit.app/
 
 ## Run it
 
@@ -113,11 +113,13 @@ Every figure traces to a real input or a cited benchmark:
 
 - **Order value (AOV)** — the advertiser's stated price if given, else the average of the
   recommended publishers, else the personas' typical spend. Never a made-up midpoint.
-- **Cost per acquisition = 30% of order value** — the campaign stays profitable spending up
-  to a third of a sale to win it.
-- **Conversion rate by category** — real DTC benchmarks: groceries/beverages ~4.5%, beauty
-  ~4%, wellness ~3%, apparel ~2.8%, pet ~2.5%, home ~1.4%, and high-ticket (≥ $500) ~1.2%.
-  A $60 dog-food order and a $1,200 handbag don't convert alike.
+- **Cost per acquisition = 30% of order value** — a **working assumption** (implies ~3.3x
+  ROAS), not a proven constant; it's flagged as an assumption in every output for a human to
+  confirm.
+- **Conversion rate by category** — grounded in **2024 e-commerce conversion benchmarks
+  (Oberlo / Statista)**: groceries/beverages ~4.5%, beauty ~4%, wellness ~3%, apparel ~2.8%,
+  pet ~2.5%, home ~1.4%, high-ticket (≥ $500) ~1.2%. A $60 dog-food order and a $1,200
+  handbag don't convert alike.
 - **Budget, clicks, impressions, ROAS** follow from those, and the forecast is checked
   against the publishers' real available inventory so the plan is physically deliverable.
 
@@ -142,35 +144,53 @@ of crashing it.
 
 ## What's genuinely hard here (and what isn't)
 
-The easy part is the plumbing — the interface, loading the catalog, the campaign arithmetic.
-Write it once and it stays correct. The hard part, where the real judgment lives, is:
+The easy part was the **design** — sketching the pipeline and deciding the shape of the output.
 
-- **Ranking with no history.** With no past clicks to learn from, "good match" has to come
-  from reasoning — and knowing when *not* to match (excluding most of the catalog, or
-  returning no campaign) is harder, and the piece most prototypes skip.
-- **Copy that fits one persona and invents nothing.** Generic copy is easy; copy written
-  *for* the Wellness Optimizer that stays true to what the advertiser said is the hard part.
-- **Numbers you can defend.** Any tool will emit a budget; making every figure trace to a
-  benchmark or a stated input is the difference between a demo and something real.
+The hard part, honestly, was giving that design **business judgment**: which fields matter,
+how much each should weigh, and reasoning about a buyer the way a strategist would. I don't
+come from an ad-tech background, so I had to research and reason it out myself — price
+sensitivity, buyer behaviour, order value, income tiers — and *then* teach the AI to apply
+the same judgment. Getting a model to think "this field means this, for this shopper" was
+the toughest part by far.
+
+One concrete example: for a pet brand, the best persona to target had only a **mid-range
+income** — on price alone it looked weak. But the attributes together made it the right
+call, and the deciding one was that these shoppers are **repeat buyers** — their
+repeat-purchase behaviour keeps generating revenue, which matters more than a single basket
+size. Working out *that* kind of reasoning — and the nuance that a mid/high-income,
+lifestyle-driven audience will still buy a premium everyday product even when its order
+value is low — is where the real difficulty, and the most room to improve, lives.
 
 ## What I'd do next
 
-- **Close the feedback loop** — capture what the advertiser accepts vs. rejects and the
-  actual results, and use them to learn the ranking the system now reasons out.
-- **Scale the matching** — at a catalog of millions, retrieve a shortlist cheaply first,
-  then let the AI rank only those; add caching and run the matches in parallel.
+- **Make the matching scalable.** Today one AI call scores the whole catalog — accurate, but
+  it won't hold at thousands of publishers. The immediate next step is **embeddings + AI
+  rerank**: embed the catalog once, pull a cheap shortlist by similarity, and let the AI rank
+  only that shortlist — same quality, at a fixed cost no matter how big the catalog grows.
+- **Then learn from results.** Once real campaigns produce accept/reject and conversion data,
+  train a proper ranker (a two-tower retrieval model + a gradient-boosted reranker). The
+  system already stores predicted-vs-actual as the training labels; today's AI reasoning is
+  what bootstraps it.
+- **Sharpen the edges** — improve category→subcategory matching (the cases below), cut the
+  AI's latency, and measure and bring down per-campaign cost.
+- **Keep improving the business sense** — the field weighting and persona reasoning are the
+  heart of the product and have the most room to get smarter.
 
 ## What I intentionally cut
 
-- **No trained performance model** — there's no historical data to train on, so it would be
-  theater. The AI is the honest cold-start fit; the feedback loop above is how it earns one.
-- **No vector search / multi-agent / logins** — none earn their complexity at this size.
-- **One creative per persona**, not A/B variants, to stay cleanly inside the 3–5 the brief
-  asks for.
-- **Subcategory-level publisher matching** — a grocery-*delivery* advertiser didn't surface
-  the grocery publisher because matching keys on the top-level category. A subcategory boost
-  fixed that one case but shifted unrelated rankings, so I kept the stable version and left
-  this as a known edge case.
+- **Breadth, for time.** With ~2–3 days, I chose depth over exploring lots of AI techniques:
+  get the business reasoning right and make the AI implement it faithfully, rather than
+  half-trying many approaches. It's an honest prototype — strong, not yet a scalable
+  production system.
+- **A validated CPA.** CPA = 30% of order value (≈3.3x ROAS) is a sensible working
+  assumption, not a proven number — so it's labeled an assumption in every output.
+- **Some category→subcategory edge cases.** The AI mis-ranked a few (e.g. apparel vs luggage,
+  and instant / grocery-delivery). Fixing one case tended to destabilise others, and I didn't
+  have time to re-test the whole suite — so I deliberately left 2–3 (there are probably more)
+  and kept the stable baseline. Better matching here is on the next list.
+- **No trained model, vector search, or logins** — none earn their complexity at this size;
+  they're the scaling path, not day-one work.
+- **One creative per persona**, not A/B variants, to stay inside the 3–5 the brief asks for.
 
 ## Layout
 
