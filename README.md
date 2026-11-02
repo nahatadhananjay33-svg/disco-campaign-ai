@@ -88,7 +88,7 @@ which one ran:
 | Matcher | What it is | Role |
 |---|---|---|
 | **LLM (Groq)** | scores every publisher/persona 0–100 with a reason, reading the real fields | **shipped / primary** — correct top picks, honest "no match," the only approach that reads AOV/income/gender to get luxury right |
-| **Deterministic** | weighted field/lexical scoring, no API (`src/fallback_publisher_matcher.py` + `fallback_persona_matcher.py`) | **offline fallback** — clean, free, fully testable; used automatically when the LLM is unavailable, and by the offline test suite |
+| **Deterministic** | weighted field/lexical scoring, no API (`src/fallback_matchers.py`) | **offline fallback** — clean, free, fully testable; used automatically when the LLM is unavailable, and by the offline test suite |
 
 The LLM wins on the thing the brief actually tests — *matching well, with visible
 reasoning* — so it ships as the primary. The deterministic matcher isn't a throwaway: it
@@ -222,9 +222,9 @@ app.py                     Streamlit UI
 src/
   pipeline.py              orchestrator: description → profile → match → creative → config
   advertiser_parser.py     Step 1: LLM parse (+ keyword fallback)
-  matching.py              Step 2: Matcher interface, LLM + deterministic
-  fallback_publisher_matcher.py  deterministic FALLBACK publisher scoring
-  fallback_persona_matcher.py    deterministic FALLBACK persona scoring
+  matching.py              Step 2: one Matcher interface holding both strategies —
+                           LLMMatcher (primary, runs) + DeterministicMatcher (fallback)
+  fallback_matchers.py     deterministic FALLBACK scoring (publisher + persona)
   creative_generator.py    Step 3: LLM creatives (+ template fallback, claim-guard)
   campaign_builder.py      Step 4: economics, forecast, measurement, feedback
   derivation.py            Step 1.5: positioning → AOV band / seasonality
@@ -235,6 +235,6 @@ src/
   data_loader.py           publishers.json / personas.json / example_advertisers
 prompts/                   the LLM prompts (extraction, matching, creative)
 tests/                     134 offline tests
-scripts/                   validation + the fallback demo
-docs/                      field reference, pipeline walkthrough, known limitations
+scripts/                   demo_fallbacks.py — the 6-scenario fallback demo
+docs/                      known_limitations.md — edge cases + the path to production
 ```

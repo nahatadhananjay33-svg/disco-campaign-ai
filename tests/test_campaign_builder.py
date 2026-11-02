@@ -1,8 +1,7 @@
 from src.campaign_builder import build_campaign
 from src.data_loader import load_personas, load_publishers
 from src.models import AdvertiserProfile, PricePositioning
-from src.fallback_persona_matcher import match_personas
-from src.fallback_publisher_matcher import rank_publishers
+from src.fallback_matchers import match_personas, rank_publishers
 
 
 def _profile() -> AdvertiserProfile:

@@ -3,7 +3,7 @@ import math
 from src.config import MIN_PERSONAS, PERSONA_WEIGHTS, TOP_PERSONAS
 from src.data_loader import load_personas
 from src.models import AdvertiserProfile, PricePositioning
-from src.fallback_persona_matcher import match_personas
+from src.fallback_matchers import match_personas
 
 
 def _luxury_handbags() -> AdvertiserProfile:
