@@ -196,6 +196,30 @@ The hook for that last step is already in the config. Each campaign carries a
 `feedback` block that stores **predicted vs. actual** performance — i.e. the first
 training labels for the learned ranker. The system is built to be told it was wrong.
 
+## What's genuinely hard here (and what isn't)
+
+The easy part is the plumbing: the Streamlit UI, loading the JSON catalog, the Pydantic
+schema, and the campaign arithmetic (CPA, CPC, budget split) are deterministic and
+well-understood — write them once and they stay correct.
+
+The hard part, where the real engineering judgment lives, is everything around the match:
+
+- **Ranking with no training data.** At cold start there are no clicks to learn from, so
+  "good match" comes from reasoning, not a trained model. Harder still is knowing when
+  *not* to match — excluding 18 of 20 publishers, or returning *no* campaign for a B2B
+  tool, instead of forcing a confident-looking answer. That honest-coverage gate is the
+  piece most prototypes skip.
+- **Creative that fits one persona and invents nothing.** Generic copy is easy; copy that
+  reads as written *for* the Wellness Optimizer while staying grounded in what the
+  advertiser actually said (the claim-guard) is the hard 20%.
+- **Grounding the economics.** Any model will emit a CPA; making every number trace back
+  to a real benchmark or a labeled assumption is the difference between a demo and
+  something you'd defend.
+
+So the interesting work isn't the LLM call — it's the scaffolding around it: validation,
+the honest-coverage logic, the fallback orchestration, and the predicted-vs-actual
+feedback seam that turns today's zero-shot scores into tomorrow's training labels.
+
 ## What I'd do next
 
 - **Close the feedback loop.** Capture accept/reject + the `feedback` block's actuals,
@@ -212,6 +236,11 @@ training labels for the learned ranker. The system is built to be told it was wr
   they're the scaling plan above, not day-one work.
 - **One creative per persona**, not A/B variants, to stay cleanly inside the 3–5 the
   brief asks for.
+- **Subcategory-aware publisher matching.** A grocery-delivery advertiser didn't surface
+  the grocery publisher, because matching keys on the top-level category and "delivery"
+  pulled the parse off `groceries`. I prototyped a subcategory-level boost; it fixed that
+  one case but shifted rankings on unrelated advertisers (noise against an otherwise
+  stable baseline), so I cut back to category matching and kept this as a known edge case.
 
 ## Layout
 
