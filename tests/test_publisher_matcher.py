@@ -7,7 +7,7 @@ import math
 from src.config import PUBLISHER_WEIGHTS
 from src.data_loader import load_publishers
 from src.models import AdvertiserProfile, PricePositioning
-from src.publisher_matcher import rank_publishers
+from src.fallback_publisher_matcher import rank_publishers
 
 
 def _premium_dog_food() -> AdvertiserProfile:

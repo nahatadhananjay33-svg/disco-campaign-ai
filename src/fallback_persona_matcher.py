@@ -1,9 +1,11 @@
-"""Module 3: match shopper personas to the advertiser.
+"""DETERMINISTIC FALLBACK — persona matcher.
 
-Same philosophy as the publisher matcher: deterministic, weighted, explainable.
-One twist — personas carry a `disinterested_in` list, which acts as a soft veto:
-if the advertiser hits something the persona actively dislikes, we don't delete
-them, we strongly demote them (and flag it, so the UI can show why).
+The FALLBACK, not the primary: runs only when the LLM matcher is unavailable, and
+in the offline tests. Same philosophy as the fallback publisher matcher —
+deterministic, weighted, explainable (weights + their rationale live in config.py,
+`PERSONA_WEIGHTS`). One twist: personas carry a `disinterested_in` list, which acts
+as a soft veto — if the advertiser hits something the persona actively dislikes, we
+don't delete them, we strongly demote them (x0.4) and flag it, so the UI can show why.
 """
 
 from __future__ import annotations
@@ -18,7 +20,7 @@ from src.config import (
 )
 from src.models import AdvertiserProfile, FactorScore, PersonaMatch
 # Reuse the Day 1 tokenizer/coverage helpers instead of re-implementing them.
-from src.publisher_matcher import _coverage, _implied_categories, _tokens
+from src.fallback_publisher_matcher import _coverage, _implied_categories, _tokens
 
 _POSITION_ORDER = ["value", "mid", "mid-premium", "premium", "luxury"]
 # Where each price-sensitivity level "wants" to sit on that 0-4 scale.

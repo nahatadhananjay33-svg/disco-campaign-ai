@@ -88,7 +88,7 @@ which one ran:
 | Matcher | What it is | Role |
 |---|---|---|
 | **LLM (Groq)** | scores every publisher/persona 0–100 with a reason, reading the real fields | **shipped / primary** — correct top picks, honest "no match," the only approach that reads AOV/income/gender to get luxury right |
-| **Deterministic** | weighted field/lexical scoring, no API (`src/publisher_matcher.py` + `persona_matcher.py`) | **offline fallback** — clean, free, fully testable; used automatically when the LLM is unavailable, and by the offline test suite |
+| **Deterministic** | weighted field/lexical scoring, no API (`src/fallback_publisher_matcher.py` + `fallback_persona_matcher.py`) | **offline fallback** — clean, free, fully testable; used automatically when the LLM is unavailable, and by the offline test suite |
 
 The LLM wins on the thing the brief actually tests — *matching well, with visible
 reasoning* — so it ships as the primary. The deterministic matcher isn't a throwaway: it
@@ -100,6 +100,20 @@ high; a post-filter
 (`LLM_RECOMMEND_GAP`) drops anything far below the top pick; and each call is fed only
 the fields that mirror its target (publishers get audience/economics, personas get
 affinity/messaging/price).
+
+**Where the fallback's weights come from.** The deterministic matcher's weights
+(`PUBLISHER_WEIGHTS`, `PERSONA_WEIGHTS` in `config.py`) are **hand-set priors, not learned
+parameters** — at cold-start there's no conversion data to fit them to, which is the whole
+reason the LLM is primary. What's justified is the *ordering*, from ad-targeting first
+principles: **category/affinity dominates** (if the audience doesn't shop the category,
+nothing else matters), then finer relevance / message fit, then audience and price, with
+**AOV weakest** (everyday products are bought regardless of basket size). Equal weights
+were rejected — they'd imply AOV matters as much as category, which it doesn't. Each weight
+and cutoff is documented inline in `config.py` with its rationale. This is deliberately
+different from the **economic constants** (CPA/CVR/CTR), which *are* grounded in published
+benchmarks (Oberlo/Statista, cited in `config.py`) because conversion rates are a knowable
+industry prior; matcher weights aren't knowable without your own data, so they stay honest
+heuristics and would be learned from campaign outcomes in production.
 
 ## The campaign economics (Step 4)
 
@@ -209,8 +223,8 @@ src/
   pipeline.py              orchestrator: description → profile → match → creative → config
   advertiser_parser.py     Step 1: LLM parse (+ keyword fallback)
   matching.py              Step 2: Matcher interface, LLM + deterministic
-  publisher_matcher.py     deterministic publisher scoring
-  persona_matcher.py       deterministic persona scoring
+  fallback_publisher_matcher.py  deterministic FALLBACK publisher scoring
+  fallback_persona_matcher.py    deterministic FALLBACK persona scoring
   creative_generator.py    Step 3: LLM creatives (+ template fallback, claim-guard)
   campaign_builder.py      Step 4: economics, forecast, measurement, feedback
   derivation.py            Step 1.5: positioning → AOV band / seasonality

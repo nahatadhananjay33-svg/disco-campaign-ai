@@ -6,7 +6,7 @@ Two strategies behind one `Matcher` interface so they're interchangeable:
     disinterest, …). Matching is a judgement about audience fit, which is exactly
     what an LLM does better than a keyword/weight system.
   * DeterministicMatcher (FALLBACK): structured rules + lexical overlap, no API
-    (src/publisher_matcher.py + src/persona_matcher.py). Used automatically by the
+    (src/fallback_publisher_matcher.py + src/fallback_persona_matcher.py). Used by the
     pipeline when the LLM is unavailable, and by the offline tests.
 
 Both return the same Pydantic objects (PublisherMatch / PersonaMatch), so callers
@@ -23,8 +23,8 @@ from abc import ABC, abstractmethod
 from pathlib import Path
 from typing import Callable
 
-import src.persona_matcher as pem
-import src.publisher_matcher as pm
+import src.fallback_persona_matcher as pem
+import src.fallback_publisher_matcher as pm
 from src.config import (
     GOOD_MATCH_THRESHOLD,
     MIN_PERSONAS,

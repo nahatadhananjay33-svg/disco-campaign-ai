@@ -1,10 +1,12 @@
-"""Module 2: rank publishers for an advertiser.
+"""DETERMINISTIC FALLBACK — publisher matcher.
 
-This is deliberately NOT an LLM. Matching is a decision that must be
-predictable, inspectable, and testable: the same profile must always produce
-the same ranking, and we must be able to explain every number. So it is plain,
-weighted Python. Each factor returns 0-100, we combine them with the weights in
-config.py, and we keep the per-factor breakdown so the UI can show the work.
+This is the FALLBACK, not the primary. It runs only when the LLM matcher
+(src/matching.py, the shipped primary) is unavailable, and in the offline test
+suite. It is deliberately NOT an LLM: predictable, inspectable, and testable — the
+same profile always produces the same ranking, and every number is explainable. So
+it is plain, weighted Python. Each factor returns 0-100, we combine them with the
+weights in config.py (`PUBLISHER_WEIGHTS` — see there for WHY those weights), and we
+keep the per-factor breakdown so the UI can show the work.
 """
 
 from __future__ import annotations

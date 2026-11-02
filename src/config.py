@@ -10,16 +10,33 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 
-# --- Publisher scoring weights (must sum to 1.0) ---
+# --- Publisher scoring weights for the DETERMINISTIC FALLBACK matcher (sum to 1.0) ---
+# These are HAND-SET PRIORS, not learned parameters: at cold-start there is no
+# conversion data to fit them to (that is exactly why the LLM is the primary matcher).
+# So what is justified is the ORDERING, from ad-targeting first principles — NOT the
+# exact decimals, which are round, deliberate priors:
+#   category 0.40    — relevance is THE primary signal. If the audience doesn't shop the
+#                      product's category, nothing else matters, so it gets the most weight.
+#   subcategory 0.25 — finer relevance within the category (pet_food vs pet_toys).
+#   audience 0.15    — demographic alignment (gender, here) refines a good category match.
+#   aov 0.10 +       — weakest signals: everyday-category products are bought by that
+#   positioning 0.10   category's audience regardless of basket size, and tier is soft,
+#                      so neither should outweigh relevance.
+# This mirrors how ad platforms rank (intent/category first, audience next, economics
+# last). Equal weights were rejected: they would imply AOV matters as much as category,
+# which ad targeting says it does not. In production these would be LEARNED from campaign
+# outcomes (the feedback loop in the README). The LLM primary matcher ignores them.
 PUBLISHER_WEIGHTS = {
-    "category": 0.40,      # does the advertiser's category match the publisher's?
-    "subcategory": 0.25,   # finer keyword overlap (pet_food, sustainable, ...)
-    "audience": 0.15,      # does the target audience line up?
-    "aov": 0.10,           # is the publisher's spend level compatible?
-    "positioning": 0.10,   # premium vs value alignment
+    "category": 0.40,
+    "subcategory": 0.25,
+    "audience": 0.15,
+    "aov": 0.10,
+    "positioning": 0.10,
 }
 
 # A publisher scoring at or below this is shown as "excluded", with a reason.
+# On the 0-100 weighted scale that is roughly a third: below it, too few factors
+# align to be worth recommending. (A round cutoff, same prior-not-learned caveat.)
 PUBLISHER_EXCLUSION_THRESHOLD = 35.0
 
 # Fallback (Tier 2): if the best non-excluded match is below this, we treat the
@@ -82,12 +99,20 @@ SEASONALITY_CUES = {
                 "wedding", "birthday", "present"],
 }
 
-# --- Persona scoring weights (must sum to 1.0) ---
+# --- Persona scoring weights for the DETERMINISTIC FALLBACK matcher (sum to 1.0) ---
+# Same reasoning as PUBLISHER_WEIGHTS: hand-set priors justified by their ordering, to
+# be learned from data in production.
+#   affinity 0.45  — category_affinities vs the advertiser: the primary "would this
+#                    shopper even buy this?" signal, so it leads.
+#   messaging 0.30 — message-market fit (persona messaging_preferences vs the brand's
+#                    tone/USPs). Weighted high because these personas drive the ad COPY.
+#   price 0.15     — the persona's price_sensitivity vs the product's positioning.
+#   aov 0.10       — typical persona spend vs the band: weakest, a soft economic check.
 PERSONA_WEIGHTS = {
-    "affinity": 0.45,    # category_affinities vs the advertiser
-    "messaging": 0.30,   # does the persona want the message this brand sends?
-    "price": 0.15,       # price_sensitivity vs positioning
-    "aov": 0.10,         # typical persona spend vs the publisher band
+    "affinity": 0.45,
+    "messaging": 0.30,
+    "price": 0.15,
+    "aov": 0.10,
 }
 
 # If the advertiser hits something a persona is "disinterested_in", we don't
