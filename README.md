@@ -18,15 +18,34 @@ suit the advertiser, and keeps working even if the AI is briefly down.
 
 ## Run it
 
+A standard Python + Streamlit app — **no Docker needed**. Python 3.13 recommended.
+
 ```bash
-cp .env.example .env          # paste a free Groq key (console.groq.com/keys)
+# 1 · clone
+git clone https://github.com/nahatadhananjay33-svg/disco-campaign-ai.git
+cd disco-campaign-ai
+
+# 2 · (recommended) a clean virtual environment
+python -m venv .venv
+source .venv/bin/activate         # Windows: .venv\Scripts\activate
+
+# 3 · install dependencies
 pip install -r requirements.txt
-pytest -q                     # 132 tests, no API key needed
-streamlit run app.py          # open http://localhost:8501
+
+# 4 · configure the environment — add a free Groq key
+cp .env.example .env              # Windows: copy .env.example .env
+#   then open .env and paste your key from console.groq.com/keys
+
+# 5 · run
+pytest -q                         # 132 tests, no API key needed
+streamlit run app.py              # opens http://localhost:8501
 ```
 
 - `GROQ_API_KEY` (required) — the AI behind understanding, matching, and creatives.
 - `GEMINI_API_KEY` (optional) — a backup AI: if Groq fails, the same calls retry on Gemini.
+
+Prefer not to install anything? The live demo runs this exact code:
+**https://disco-campaign-ai.streamlit.app/**
 
 ## How it works
 
