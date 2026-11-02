@@ -135,22 +135,12 @@ Every figure traces to a real input or a cited benchmark:
 - **Cost per acquisition = 30% of order value** — a **working assumption** (implies ~3.3x
   ROAS), not a proven constant; it's flagged as an assumption in every output for a human to
   confirm.
-- **Conversion rate by category** — grounded in **2024 e-commerce conversion benchmarks
-  (Oberlo / Statista)**: groceries/beverages ~4.5%, beauty ~4%, wellness ~3%, apparel ~2.8%,
-  pet ~2.5%, home ~1.4%, high-ticket (≥ $500) ~1.2%. A $60 dog-food order and a $1,200
-  handbag don't convert alike.
+- **Conversion rate by category** — grounded in 2024 e-commerce conversion benchmarks by
+  industry ([Oberlo](https://www.oberlo.com/statistics/ecommerce-conversion-rate-by-industry)):
+  groceries/beverages ~4.5%, beauty ~4%, wellness ~3%, apparel ~2.8%, pet ~2.5%, home ~1.4%,
+  high-ticket (≥ $500) ~1.2%. A $60 dog-food order and a $1,200 handbag don't convert alike.
 - **Budget, clicks, impressions, ROAS** follow from those, and the forecast is checked
   against the publishers' real available inventory so the plan is physically deliverable.
-
-## Honest when nothing fits
-
-The product grades its own coverage. A consumer-DTC catalog has no home for a B2B dental
-tool — so instead of fabricating publishers and a budget, it returns **no campaign** and
-names the kind of publisher that *would* fit. A forced match wastes the advertiser's money
-and their trust, so a forced match is worse than no match.
-
-*Example:* "handmade dog collars" → strong pet-publisher matches, full campaign.
-"enterprise tax-filing software" → no consumer publisher fits, so the product says so.
 
 ## Always-on (the fallback)
 
