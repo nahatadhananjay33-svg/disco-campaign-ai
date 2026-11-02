@@ -1,9 +1,9 @@
 # Disco Campaign AI
 
 An advertiser types one or two sentences about their business; the system returns a
-**draft campaign**: ranked publishers (with reasons and exclusions), 3–5 persona-tuned
-ad creatives (each with its reasoning), and a structured campaign config a human can
-review, edit, and launch.
+**draft campaign**: ranked publishers (with reasons and exclusions), persona-tuned
+ad creatives (up to five, one per strong-fit persona, each with its reasoning), and a
+structured campaign config a human can review, edit, and launch.
 
 It handles messy input ("idk just try it" → asks instead of guessing), shows its work
 (every pick has a reason), is honest when the catalog has no good fit (a B2B dental
@@ -15,7 +15,7 @@ a fallback, so a single LLM outage degrades the output instead of crashing it.
 ```bash
 cp .env.example .env          # paste a free Groq key (console.groq.com/keys)
 pip install -r requirements.txt
-pytest -q                     # 132 tests, no API key needed (offline, deterministic path)
+pytest -q                     # 134 tests, no API key needed (offline, deterministic path)
 streamlit run app.py          # open http://localhost:8501
 ```
 
@@ -30,21 +30,45 @@ free and fast.
 
 ## How it works
 
+```mermaid
+%%{init: {"flowchart": {"defaultRenderer": "elk"}}}%%
+flowchart TD
+    A([Advertiser sentence]) -->|LLM parse| B[Advertiser profile]
+    B --> C{Confidence high enough?}
+    C -->|no| STOP[Ask clarifying questions · stop]
+    C -->|yes| PUB["Match publishers · LLM<br/>➜ 3–4 ideal publishers + exclusions"]
+    C -->|yes| PER["Match personas · LLM<br/>➜ 3–5 best-fit personas"]
+    PUB --> COV{Coverage ok?}
+    COV -->|none| GAP[Explain the gap · no campaign]
+    B --> CRE
+    PER --> CRE
+    COV -->|good / weak| CFG
+    PER --> CFG
+    B --> CFG
+
+    subgraph OUT ["Final output — what the advertiser gets"]
+      CRE["Creatives<br/>from profile + persona"]
+      CFG["Campaign config<br/>from profile + publishers + personas"]
+    end
+
+    classDef stop fill:#fde8e8,stroke:#e57373,color:#111;
+    classDef out fill:#e8f0fe,stroke:#5b8def,color:#111,stroke-width:2px;
+    classDef win fill:#e4f6e4,stroke:#43a047,stroke-width:2px,color:#111;
+    class STOP,GAP stop
+    class CRE,CFG out
+    class PUB,PER win
+    style OUT fill:#f3f7ff,stroke:#5b8def,stroke-dasharray:4 3
 ```
-description ──LLM(Groq)──▶ advertiser profile (16 fields, Pydantic-validated, has confidence)
-                               │                 │
-                               │     confidence < 0.45 ──▶ ask clarifying questions, stop
-                               │                           (no invented campaign)
-            ┌──────────────────┼────────────────────┐
-     publisher matcher     persona matcher      ← LLM scores each 0–100 + a reason,
-            │                  │ top 3–5 personas    reading the real fields (AOV, income,
-            │                  │                     gender, age, affinities, disinterest)
-            │                  │
-       coverage check ──▶ weak/none ──▶ explain the gap honestly;
-            │                           off-catalog → NO forced campaign
-            │                  └──LLM──▶ one creative per persona (claim-guarded)
-            └──────────────────────────▶ campaign config (budget, CPA, CVR, forecast)
-```
+
+Each step's input → output (LLM steps are marked; every LLM step has an offline fallback — see the fallback table below):
+
+1. **Parse** · *LLM* — the raw sentence → an 18-field `AdvertiserProfile`: product category, subcategories, price point + positioning, target audience / gender / age / geography, USPs, values, brand tone, brand name, business model, expected AOV, seasonality, plus the gate fields (confidence, missing info, clarifying questions).
+2. **Confidence gate** — below 0.45 the profile is too thin, so the system asks clarifying questions and stops; no invented campaign.
+3. **Match publishers** · *LLM* — profile + all **20** publisher briefs (category, AOV, audience, income tier, reach) → every publisher scored 0–100 with a reason and an `excluded` flag.
+4. **Match personas** · *LLM* — profile + all **10** persona briefs (affinities, price-sensitivity, typical AOV, messaging prefs, disinterests) → every persona scored with a reason; the strongest (up to 5) that clear a floor of 30 are selected. Publisher and persona matching run — and fall back — independently.
+5. **Coverage check** (on publishers) — good / weak / none. On *none* (nothing clears the exclusion bar), the system explains the gap and stops: no creatives, no budget.
+6. **Creatives** · *LLM*, one per selected persona — profile + persona → headline, body, messaging angle, reasoning; a claim-guard removes any claim the advertiser never made.
+7. **Campaign config** · *deterministic, no LLM* — assembled from the profile + recommended publishers + selected personas (creatives are a separate output, not part of it). AOV = stated price → else mean publisher AOV → else mean persona AOV; CPA = 30% of AOV; CVR = category benchmark (1.2% if AOV ≥ $500); CPC = CPA × CVR; daily budget = 15 × CPA; total = 30-day flight. Plus the budget split across publishers by score, targeting, a deliverability forecast, a measurement block, and a `feedback` block (predicted vs. actual) for future training.
 
 **The core design decision — LLM for language *and* for the match judgment.** Reading
 fuzzy input and writing copy are language tasks, so they use an LLM. Matching is also,
@@ -68,10 +92,11 @@ which one ran:
 
 The LLM wins on the thing the brief actually tests — *matching well, with visible
 reasoning* — so it ships as the primary. The deterministic matcher isn't a throwaway: it
-keeps the whole pipeline working (and the 132 tests running) with no API key at all.
+keeps the whole pipeline working (and the 134 tests running) with no API key at all.
 
 To keep the LLM disciplined: a rubric in the prompt (direct category/affinity → 85–100;
-shared-values-only → ≤55) stops it clustering everything high; a post-filter
+a shared value/demographic alone → the weak 30–59 band) stops it clustering everything
+high; a post-filter
 (`LLM_RECOMMEND_GAP`) drops anything far below the top pick; and each call is fed only
 the fields that mirror its target (publishers get audience/economics, personas get
 affinity/messaging/price).
@@ -106,8 +131,8 @@ match.
 Coverage is judged on **publisher** fit, because a creative is an ad placed *on* a
 publisher — with no viable publisher there is nowhere to run the copy, so on *none* the
 creative and budget stages are skipped entirely (the personas are still shown, with honest
-low scores, for transparency). And even on a good match, copy is written only for the 3–5
-*selected* personas, never for the low-scoring ones you aren't targeting.
+low scores, for transparency). And even on a good match, copy is written only for the
+*selected* personas (up to 5), never for the low-scoring ones you aren't targeting.
 
 ## Never goes dark: a fallback at every stage
 
@@ -117,7 +142,7 @@ persona LLM result:
 
 | Stage | Primary | Fallback |
 |---|---|---|
-| Parse | LLM extracts the 16-field profile | keyword extraction from the raw text |
+| Parse | LLM extracts the 18-field profile | keyword extraction from the raw text |
 | Match (publisher) | LLM scores + reasons | deterministic matcher (independent of persona) |
 | Match (persona) | LLM scores + reasons | deterministic matcher (independent of publisher) |
 | Coverage note | LLM explains the gap | static "no strong fit" note |
@@ -191,10 +216,11 @@ src/
   derivation.py            Step 1.5: positioning → AOV band / seasonality
   models.py                all Pydantic models
   config.py                every tunable constant, with sources
+  taxonomy.py              category/geo vocabulary derived from the catalog
   llm.py                   Groq call + Gemini cross-provider fallback + retries
-  data_loader.py           publishers.json / personas.json
+  data_loader.py           publishers.json / personas.json / example_advertisers
 prompts/                   the LLM prompts (extraction, matching, creative)
-tests/                     132 offline tests
+tests/                     134 offline tests
 scripts/                   validation + the fallback demo
-docs/                      field reference + full pipeline walkthrough
+docs/                      field reference, pipeline walkthrough, known limitations
 ```

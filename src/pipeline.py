@@ -82,7 +82,7 @@ def run_pipeline(
     creatives = generate_creatives(profile, selected, personas_by_id, llm_call=creative_llm)
     if any(c.reasoning.startswith("Template fallback") for c in creatives):
         degraded.append("Some creatives used the template fallback (LLM unavailable).")
-    campaign = build_campaign(profile, ranked_publishers, selected, personas_by_id, creatives=creatives)
+    campaign = build_campaign(profile, ranked_publishers, selected, personas_by_id)
 
     return CampaignResult(
         profile=profile, needs_clarification=False, coverage=coverage, coverage_note=coverage_note,

@@ -40,7 +40,6 @@ from src.models import (
     Budget,
     BidStrategy,
     CampaignConfig,
-    CreativeRef,
     Feedback,
     Forecast,
     KpiTargets,
@@ -144,7 +143,6 @@ def build_campaign(
     ranked_publishers: list[PublisherMatch],
     selected_personas: list[PersonaMatch],
     personas_by_id: dict[str, dict],
-    creatives: list | None = None,
 ) -> CampaignConfig:
     assumptions: list[str] = []
     pubs = _pubs_by_id()
@@ -205,9 +203,6 @@ def build_campaign(
                    f"{objective} objective on defaults (no AOV basis)."),
     )
 
-    creative_refs = [CreativeRef(persona_id=c.persona_id, persona_name=c.persona_name, headline=c.headline)
-                     for c in (creatives or [])]
-
     # --- measurement: how success is defined (needed to even compute CVR/CPA) ---
     conversion_event = "lead" if objective == "lead_generation" else "purchase"
     measurement = Measurement(
@@ -249,6 +244,5 @@ def build_campaign(
         forecast=forecast,
         measurement=measurement,
         feedback=feedback,
-        creatives=creative_refs,
         assumptions=assumptions,
     )

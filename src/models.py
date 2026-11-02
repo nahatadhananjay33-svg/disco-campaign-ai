@@ -206,12 +206,6 @@ class Forecast(BaseModel):
     expected_roas: float                # revenue per ad dollar at target CPA
 
 
-class CreativeRef(BaseModel):
-    persona_id: str
-    persona_name: str
-    headline: str                       # the tailored creative that runs for this segment
-
-
 class KpiTargets(BaseModel):
     target_cpa_usd: float               # the CPA the campaign is judged against
     target_roas: float                  # the ROAS the campaign is judged against
@@ -254,7 +248,6 @@ class CampaignConfig(BaseModel):
     forecast: Forecast | None = None
     measurement: Measurement | None = None
     feedback: Feedback | None = None
-    creatives: list[CreativeRef] = Field(default_factory=list)
     assumptions: list[str] = Field(default_factory=list)
 
 
