@@ -1,0 +1,427 @@
+[
+  {
+    "n": 1,
+    "text": "We sell premium dog food for senior dogs, targeting owners who care about joint health and longevity. Grain-free, vet-formulated, subscription-based.",
+    "ms": 0.75,
+    "profile": {
+      "product_category": "pet",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "premium",
+      "price_point_usd": null,
+      "expected_aov_usd": 165.0,
+      "seasonality": null,
+      "brand_tone": [
+        "premium"
+      ],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "subscription",
+      "brand_name": null,
+      "confidence": 0.84,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 2,
+    "text": "A sustainable activewear brand for women. Made from recycled ocean plastic. Price point sits between Lululemon and Girlfriend Collective.",
+    "ms": 0.57,
+    "profile": {
+      "product_category": "apparel",
+      "subcategories": [
+        "activewear",
+        "sustainable"
+      ],
+      "target_gender": "female",
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [
+        "sustainable"
+      ],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.95,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 3,
+    "text": "We make a non-alcoholic sparkling drink with adaptogens. It's for people who want to feel good without a hangover, kind of like a functional cocktail alternative.",
+    "ms": 0.57,
+    "profile": {
+      "product_category": "beverages",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.85,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 4,
+    "text": "Small-batch candles poured by hand in Vermont. Natural soy wax, no synthetic fragrances. Mostly bought as gifts.",
+    "ms": 0.5,
+    "profile": {
+      "product_category": "home",
+      "subcategories": [
+        "natural"
+      ],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [
+        "natural"
+      ],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.92,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 5,
+    "text": "We help people feel better.",
+    "ms": 0.41,
+    "profile": {
+      "product_category": null,
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": null,
+      "brand_name": null,
+      "confidence": 0.15,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 6,
+    "text": "Technical outerwear for serious backcountry skiers. Our shells are what patrollers wear. Starts at $650, goes up from there.",
+    "ms": 0.5,
+    "profile": {
+      "product_category": "apparel",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "luxury",
+      "price_point_usd": 650.0,
+      "expected_aov_usd": 650.0,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.89,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 7,
+    "text": "B2B SaaS for dental practices. We automate their patient recall workflow.",
+    "ms": 0.46,
+    "profile": {
+      "product_category": null,
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "b2b",
+      "brand_name": null,
+      "confidence": 0.15,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated",
+        "looks B2B / off-catalog for a consumer-DTC catalog"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 8,
+    "text": "A new kind of thing for moms.",
+    "ms": 0.41,
+    "profile": {
+      "product_category": null,
+      "subcategories": [],
+      "target_gender": "female",
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": null,
+      "brand_name": null,
+      "confidence": 0.15,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 9,
+    "text": "Refillable, concentrated cleaning products. Skip the single-use plastic bottles. Works as well as the big brands. We want to show up where people who already care about sustainability are checking out.",
+    "ms": 0.56,
+    "profile": {
+      "product_category": "home",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [
+        "refillable"
+      ],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.8,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 10,
+    "text": "Custom-fit leather handbags, Italian-made, handcrafted in Florence. Minimum order ships in 6 weeks. Average price point $1,200.",
+    "ms": 0.48,
+    "profile": {
+      "product_category": "apparel",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "luxury",
+      "price_point_usd": 1200.0,
+      "expected_aov_usd": 1200.0,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.86,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 11,
+    "text": "We sell protein bars that don't taste like cardboard. That's basically the whole pitch.",
+    "ms": 0.45,
+    "profile": {
+      "product_category": "groceries",
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.82,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 12,
+    "text": "A subscription box for new cat owners. First three months of their cat's life. Toys, food samples, a little booklet about what to expect.",
+    "ms": 0.48,
+    "profile": {
+      "product_category": "pet",
+      "subcategories": [
+        "toys"
+      ],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "subscription",
+      "brand_name": null,
+      "confidence": 0.84,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 13,
+    "text": "Workout supplements: pre-workout, creatine, protein. We compete on price, not on marketing. Same formulations as the expensive brands for half the cost.",
+    "ms": 0.55,
+    "profile": {
+      "product_category": "wellness_dtc",
+      "subcategories": [
+        "supplements"
+      ],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "value",
+      "price_point_usd": null,
+      "expected_aov_usd": 40.0,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.89,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 14,
+    "text": "Bedding. Linen. Actually-breathable stuff made in Portugal. Our customers are mostly people who got tired of the Brooklinen/Parachute aesthetic and want something a little more grown-up.",
+    "ms": 0.51,
+    "profile": {
+      "product_category": "home",
+      "subcategories": [
+        "bedding"
+      ],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": "dtc",
+      "brand_name": null,
+      "confidence": 0.86,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  },
+  {
+    "n": 15,
+    "text": "idk just try it",
+    "ms": 0.36,
+    "profile": {
+      "product_category": null,
+      "subcategories": [],
+      "target_gender": null,
+      "target_age_range": null,
+      "target_audience": [],
+      "target_geography": [],
+      "price_positioning": "unknown",
+      "price_point_usd": null,
+      "expected_aov_usd": null,
+      "seasonality": null,
+      "brand_tone": [],
+      "values": [],
+      "unique_selling_points": [],
+      "business_model": null,
+      "brand_name": null,
+      "confidence": 0.15,
+      "missing_information": [
+        "data-free parse: USPs / brand voice / clarifying questions not generated"
+      ],
+      "clarifying_questions": []
+    }
+  }
+]

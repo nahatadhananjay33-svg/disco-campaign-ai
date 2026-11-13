@@ -1,0 +1,26 @@
+EMBEDDING MATCHER vs DETERMINISTIC MATCHER   [engine: embeddings]
+====================================================================
+
+### premium dog food (pet, premium, subscription)   (embedding matcher: 5.34 ms)
+  PUBLISHERS
+    embedding : Pawline(88), Ruffco(85), Tailcrate(70)
+    rule-based: Ruffco(74), Pawline(73), Tailcrate(59)
+  PERSONAS (selected)
+    embedding : The Pet Parent, The Busy Parent, The Sustainability Buyer, The Affluent Classic
+    rule-based: The Busy Parent, The Pet Parent, The Gifter
+
+### luxury leather handbags (apparel, luxury)   (embedding matcher: 5.44 ms)
+  PUBLISHERS
+    embedding : Linden Park(62), Cloudfoot(50), Marlowe & Co.(49)
+    rule-based: Stride & Stem(68), Linden Park(67), Cloudfoot(63)
+  PERSONAS (selected)
+    embedding : The Affluent Classic, The Gifter, The Fitness Enthusiast
+    rule-based: The Affluent Classic, The Gifter, The Sustainability Buyer
+
+### sustainable activewear for women (apparel)   (embedding matcher: 4.47 ms)
+  PUBLISHERS
+    embedding : Cloudfoot(88), Movewell(84), Linden Park(76)
+    rule-based: Movewell(97), Marlowe & Co.(90), Everbody(90)
+  PERSONAS (selected)
+    embedding : The Fitness Enthusiast, The Affluent Classic, The Sustainability Buyer
+    rule-based: The Sustainability Buyer, The Gifter, The Affluent Classic, The Fitness Enthusiast
